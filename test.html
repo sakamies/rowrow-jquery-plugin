@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<head>
+  <meta charset="UTF-8">
+  <title>Rowrow test page</title>
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="jquery.rowrow.js" type="text/javascript" charset="utf-8"></script>
+
+  <style type="text/css">
+    div {
+      font-family: monospace;
+      margin: 0 0 0 .5em;
+      padding: 0 0 0 .5em;
+      line-height: 1.5em;
+      cursor: pointer;
+    }
+    div:hover {
+      background: hsla(200, 100%, 50%, .1);
+    }
+    .selected {
+      outline: 2px solid hsl(200, 50%, 50%);
+      background: hsla(200, 100%, 50%, .1);
+    }
+  </style>
+
+  <script>
+    $(document).ready(function() {
+      $('div').click(function(event) {
+        event.stopPropagation();
+        console.log('argument');
+        $('.selected').removeClass('selected');
+        $(this).addClass('selected');
+      });
+
+      $('#up').click(function(event) {
+        var selected = $('.selected');
+        selected.removeClass('selected');
+        selected.prevRow('div').addClass('selected');
+      });
+
+      $('#down').click(function(event) {
+        var selected = $('.selected');
+        selected.removeClass('selected');
+        selected.nextRow('div').addClass('selected');
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+  <h1>Rowrow test page</h1>
+  <p>A jQuery plugin for raversing the dom row by row.</p>
+  <p>Usage: $(element).prevRow(); $(element).nextRow()</p>
+  <p><button id="up">Row up &uarr;</button> <button id="down">Row down &darr;</button></p>
+  <div>1</div>
+  <div>
+    2
+      <div class="selected">2.1</div>
+      <div>2.2
+          <div>2.2.1</div>
+          <div>2.2.2</div>
+      </div>
+  </div>
+  <div>3</div>
+  <div>4</div>
+  <div>5</div>
+</body>
+</html>

@@ -1,4 +1,11 @@
-rowrow-jquery-plugin
-====================
+Rowrow
+===
 
-Traverse DOM elements line by line.
+A jQuery plugin for raversing the dom row by row.
+
+Usage
+---
+
+$(element).prevRow(filter);
+
+$(element).nextRow(filter);
